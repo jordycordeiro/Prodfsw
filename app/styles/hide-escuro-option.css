@@ -1,0 +1,4 @@
+/* Oculta quaisquer opções 'Escuro' no select de presets, mantendo o painel original */
+select option[value="escuro"],
+select option[value="Escuro"],
+select option[value="ESCuro"] { display: none !important; }
