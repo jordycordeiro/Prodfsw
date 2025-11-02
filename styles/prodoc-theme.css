@@ -1,0 +1,217 @@
+/* ==========================================================================
+   PRODOC THEME — folha completa
+   ========================================================================== */
+
+:root{
+  /* Cores principais */
+  --brand:   #0a70c7;        /* azul principal */
+  --brand-2: #1e40af;        /* azul p/ gradiente */
+  --brand-3: #2563eb;        /* hover do botão primário */
+
+  /* Texto / borda / sombra */
+  --text:    #0f172a;        /* slate-900 */
+  --muted:   #64748b;        /* slate-500 */
+  --line:    rgba(10,112,199,.15);
+  --shadow:  0 18px 44px rgba(2,80,200,.10);
+
+  /* Raios padrão */
+  --radius-lg: 20px;
+  --radius-md: 14px;
+}
+
+/* ==========================================================================
+   Botões
+   ========================================================================== */
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:.5rem; height:40px; padding:0 .9rem;
+  font-weight:600; font-size:14px; line-height:1;
+  border:1px solid #e2e8f0; border-radius:12px;
+  background:#fff; color:var(--text);
+  transition:all .15s ease;
+}
+.btn:hover{ background:#f8fafc; border-color:#dbe3ef; }
+.btn:focus{ outline:2px solid rgba(37,99,235,.25); outline-offset:2px; }
+.btn:active{ transform:translateY(.5px); }
+
+.btn.btn-brand,
+.btn[data-role="primary"]{
+  background:linear-gradient(180deg, var(--brand), var(--brand-2));
+  color:#fff; border-color:transparent;
+  box-shadow:0 6px 16px rgba(10,112,199,.25);
+}
+.btn.btn-brand:hover,
+.btn[data-role="primary"]:hover{
+  background:linear-gradient(180deg, var(--brand-3), var(--brand-2));
+  color:#fff;
+}
+
+/* ==========================================================================
+   Toolbar (menu superior)
+   ========================================================================== */
+
+/* Use esta versão quando quiser a toolbar sem fundo */
+.prodoc-toolbar--transparent{
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+
+/* Versão padrão (neutra) — quando a toolbar fica dentro do card branco */
+.prodoc-toolbar{
+  background:#fff;
+  border:1px solid #e6effa;
+  border-radius:12px;
+  padding:.5rem;
+}
+
+/* Remove linha divisória se alguma toolbar ficar dentro do card */
+.prodoc-surface > .prodoc-toolbar,
+.prodoc-surface > .toolbar-no-divider,
+.prodoc-surface > div[role="toolbar"]{
+  border-bottom:0 !important;
+  box-shadow:none !important;
+}
+
+/* ==========================================================================
+   Superfície/Cartão branco (engloba toolbar + header azul + conteúdo)
+   ========================================================================== */
+
+.prodoc-surface{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+
+  /* gutter horizontal do conteúdo (p-4 = 16px).
+     Usado para alinhar a barra azul às caixas. */
+  --surface-gutter-x: 16px;
+}
+
+/* Cabeçalho azul dentro do cartão — ALINHADO e com 4 cantos arredondados */
+.prodoc-surface__header{
+  background:linear-gradient(180deg, var(--brand), var(--brand-2));
+  color:#fff;
+  font-weight:700;
+  padding:10px 16px;
+
+  /* Alinhar às caixas (mesma largura do conteúdo) */
+  margin-left:  var(--surface-gutter-x) !important;
+  margin-right: var(--surface-gutter-x) !important;
+
+  /* Espaço entre a barra e a 1ª caixa */
+  margin-bottom: 10px;
+
+  /* Quatro cantos arredondados */
+  border-radius: var(--radius-md) !important;
+
+  /* Garantir ausência de qualquer traço divisor */
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   Inputs / Textareas de edição
+   ========================================================================== */
+
+.prodoc-input{
+  width:100%;
+  padding:.6rem .9rem;
+  border:1px solid #e2e8f0;
+  border-radius:12px;
+  background:#fff;
+  color:var(--text);
+  font-size:15px; line-height:1.25;
+}
+.prodoc-input:focus{
+  border-color:#93c5fd;
+  outline:2px solid rgba(147,197,253,.5);
+}
+
+.prodoc-textarea{
+  width:100%; min-height:120px; resize:vertical;
+  padding:.75rem .9rem;
+  border:1px solid #e2e8f0;
+  border-radius:12px;
+  background:#fff;
+  color:var(--text);
+  font-size:15px; line-height:1.35;
+}
+.prodoc-textarea:focus{
+  border-color:#93c5fd;
+  outline:2px solid rgba(147,197,253,.5);
+}
+
+/* ==========================================================================
+   Botões de ação compactos (drag/delete nos cards)
+   ========================================================================== */
+
+.icon-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:32px; height:32px;
+  border-radius:10px; border:1px solid #e5e7eb;
+  background:#fff; color:#64748b;
+}
+.icon-btn:hover{ color:#111827; background:#f8fafc; }
+
+.icon-btn--danger{
+  border-color:#fecaca; background:#fff1f2; color:#dc2626;
+}
+.icon-btn--danger:hover{ background:#ffe4e6; }
+
+/* ==========================================================================
+   Sidebar (sutil, opcional)
+   ========================================================================== */
+
+.prodoc-sidebar-group{
+  background:#fff;
+  border:1px solid #e6effa;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+}
+
+/* ==========================================================================
+   Utilitários leves
+   ========================================================================== */
+
+.shadow-soft{ box-shadow:var(--shadow); }
+.rounded-soft{ border-radius:var(--radius-md); }
+.rounded-large{ border-radius:var(--radius-lg); }
+
+/* Chips (se usados) */
+.prodoc-chip{
+  display:inline-flex; align-items:center; gap:.5rem;
+  height:34px; padding:0 .75rem;
+  border-radius:999px; border:1px solid #e2e8f0; background:#fff;
+  font-weight:600; font-size:13px; color:#0f172a;
+}
+.prodoc-chip--blue{
+  background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8;
+}
+
+/* ==========================================================================
+   Fim
+   ========================================================================== */
+
+
+/* === Neumorphism utility for icon tiles === */
+.btn-neumo{
+  background: var(--ice-bg, #eef5ff);
+  border: 1px solid var(--ice-border, #dbe9ff);
+  border-radius: 12px;
+  box-shadow:
+    6px 6px 16px rgba(30, 64, 175, 0.10),
+    -6px -6px 16px rgba(255, 255, 255, 0.90);
+  transition: box-shadow .15s ease, transform .15s ease;
+}
+.btn-neumo:hover{ transform: translateY(-1px); }
+.btn-neumo:active{
+  box-shadow:
+    inset 5px 5px 12px rgba(30,64,175,0.12),
+    inset -5px -5px 12px rgba(255,255,255,0.95);
+  transform: translateY(0);
+}

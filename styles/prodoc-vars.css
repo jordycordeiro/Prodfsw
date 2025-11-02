@@ -1,0 +1,9 @@
+:root{
+  --prodoc-blue: #165DFF; /* Azul principal do Prodoc (Patologias) */
+}
+
+/* Utilitários leves (opcional) */
+.bg-prodoc-blue{ background: var(--prodoc-blue); }
+.text-prodoc-blue{ color: var(--prodoc-blue); }
+/* Para inputs/checkbox com accent-color moderno */
+.accent-prodoc-blue{ accent-color: var(--prodoc-blue); }

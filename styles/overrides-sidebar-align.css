@@ -1,0 +1,38 @@
+
+/* ==== Sidebar/topbar alignment patch (Protótipo 2.0) ==== */
+:root{
+  /* Altura da barra superior (ajuste fino se necessário) */
+  --topbar-h: 64px;
+  --page-pad: 20px;
+  --gap: 18px;
+}
+
+/* Topbar com altura estável */
+.topbar{ position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid #e8eef5; }
+.topbar .inner{
+  min-height: var(--topbar-h);
+  padding: 0 var(--page-pad);
+  display: flex; align-items: center; gap: 14px;
+}
+
+/* Grid principal com o mesmo gap usado no cálculo do sticky da sidebar */
+.wrap{
+  max-width: 1280px;
+  margin: var(--gap) auto 24px;
+  padding: 0 var(--page-pad);
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--gap);
+  align-items: start;
+  box-sizing: border-box;
+}
+
+/* Sidebar — sticky alinhada exatamente após a topbar + o mesmo gap do grid */
+.menu{
+  position: sticky;
+  top: calc(var(--topbar-h) + var(--gap));
+  margin-top: 0;
+}
+
+/* Garantir que o primeiro bloco dentro da sidebar não cria espaçamento extra */
+.menu .search{ margin-top: 0; }

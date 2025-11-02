@@ -1,0 +1,32 @@
+/* === overrides-final.css ================================================
+   Força áreas interativas acima de qualquer overlay e garante cliques.
+   Importe por último no app/globals.css:  @import url('../styles/overrides-final.css');
+========================================================================== */
+
+/* 1) Topbar, menu e canvas SEMPRE clicáveis e sobrepostos */
+.topbar, .wrap, #leftMenu, .canvas, #prescriptions {
+  position: relative;
+  z-index: 2147483000 !important;
+  pointer-events: auto !important;
+}
+
+/* 2) Neutraliza sobreposições de tela (exceto settings quando aberto) */
+.overlay, .backdrop, .modal-backdrop, [data-overlay], [data-backdrop] {
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+#settings:not(.open) { pointer-events: none !important; }
+#settings:not(.open) .panel { display: none !important; }
+#settings:not(.open)::before { display: none !important; }
+
+/* 3) Engrenagem no canto superior direito (sempre clicável) */
+#settings .gear {
+  position: fixed;
+  top: 12px; right: 16px; left: auto;
+  z-index: 2147483647 !important;
+  pointer-events: auto !important;
+}
+
+/* Quando aberto, o painel volta a receber eventos normalmente */
+#settings.open { pointer-events: auto !important; }
+#settings.open .panel { display: block !important; }

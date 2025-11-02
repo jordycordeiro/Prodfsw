@@ -1,0 +1,43 @@
+/* === HOTFIX: evitar overlay invisível bloqueando cliques ===================
+   Garante que o container #settings não capture eventos quando fechado,
+   preservando o clique na engrenagem e liberando toda a página. */
+
+#settings {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;        /* passa os cliques para o conteúdo abaixo */
+}
+
+/* a engrenagem continua clicável mesmo com o container acima */
+#settings .gear {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  pointer-events: auto;
+}
+
+/* painel fechado não deve ocupar espaço nem receber eventos */
+#settings .panel {
+  display: none;
+}
+
+/* quando aberto, reabilita a captura e mostra painel + backdrop opcional */
+#settings.open {
+  pointer-events: auto;
+}
+#settings.open .panel {
+  display: block;
+}
+
+/* se existir backdrop via ::before no CSS do protótipo, assegura controle */
+#settings::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,.22);
+  display: none;
+}
+#settings.open::before {
+  display: block;
+}

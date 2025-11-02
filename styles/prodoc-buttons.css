@@ -1,0 +1,11 @@
+/* Optional helper class if you want a single-row wrapper instead of the <Toolbar/> component */
+.toolbar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.7);
+  padding: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}

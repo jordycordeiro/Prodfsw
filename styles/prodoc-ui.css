@@ -1,0 +1,13 @@
+.card-head-icon {
+  font-size: 18px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #3b82f6;
+  box-shadow: 0 6px 18px rgba(59,130,246,.15);
+}

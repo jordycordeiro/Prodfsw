@@ -1,0 +1,51 @@
+/* === overrides-prodoc.css (neutro e determinístico) =====================
+   - Remove qualquer comportamento de overlay do #settings
+   - Mantém engrenagem no topo direito
+   - Faz o painel abrir como dropdown posicionado, sem cobrir a tela
+========================================================================= */
+
+/* Topbar e áreas principais sempre clicáveis */
+.topbar, .wrap, #leftMenu, .canvas {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* 1) #settings NUNCA é overlay: fica estático dentro da topbar */
+#settings {
+  position: static !important;
+  inset: auto !important;
+  width: auto !important;
+  height: auto !important;
+  pointer-events: auto !important;
+}
+
+/* Esconde qualquer backdrop/herança do protótipo */
+#settings::before, #settings .backdrop, #settings .overlay {
+  display: none !important;
+}
+
+/* 2) Engrenagem fixa no canto superior direito */
+#settings .gear {
+  position: fixed !important;
+  top: 12px !important;
+  right: 16px !important;
+  left: auto !important;
+  z-index: 10000 !important;
+  pointer-events: auto !important;
+}
+
+/* 3) Painel abre como dropdown posicionado sob a engrenagem */
+#settings .panel {
+  position: fixed !important;
+  top: 52px !important;  /* abaixo da topbar */
+  right: 16px !important;
+  width: min(420px, 92vw);
+  max-height: min(70vh, 720px);
+  overflow: auto;
+  display: none;
+  z-index: 9999 !important;
+}
+#settings.open .panel {
+  display: block;
+}

@@ -1,0 +1,18 @@
+/* === Fix de clique para a coluna esquerda (.menu / #leftMenu) ============= */
+
+/* Cria um novo contexto de empilhamento acima de overlays residuais */
+.wrap { position: relative; z-index: 1; }
+
+/* Garante que o menu esteja acima, receba cliques e não tenha pseudoelementos cobrindo */
+#leftMenu { position: relative; z-index: 10 !important; pointer-events: auto !important; }
+#leftMenu *, #leftMenu::before, #leftMenu::after { pointer-events: auto !important; }
+#leftMenu::before, #leftMenu::after { display: none !important; }
+
+/* Container de settings fechado NUNCA captura cliques */
+#settings { pointer-events: none !important; }
+#settings .panel { display: none !important; }
+#settings.open { pointer-events: auto !important; }
+#settings.open .panel { display: block !important; }
+#settings .gear { position: fixed; top: 10px; left: 10px; pointer-events: auto !important; z-index: 9999; }
+#settings::before { display:none !important; }
+#settings.open::before { display:block !important; }
